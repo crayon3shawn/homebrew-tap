@@ -1,8 +1,8 @@
 class McpCliManager < Formula
   desc "MCP CLI Manager - 用於管理 Model Context Protocol 服務的命令行工具"
   homepage "https://github.com/crayon3shawn/mcp-cli-manager"
-  url "https://github.com/crayon3shawn/mcp-cli-manager/archive/refs/tags/v1.0.1.tar.gz"
-  sha256 "3661137c2d896f405be465767b85351f30d1391786203bbc477f7acf73541457"
+  url "https://github.com/crayon3shawn/mcp-cli-manager/archive/refs/tags/v1.0.2.tar.gz"
+  sha256 "59f871fcfa44655278f82db913c06f49381bcb600941a267ea99f0bf109a1576"
   license "MIT"
 
   depends_on "zsh"
