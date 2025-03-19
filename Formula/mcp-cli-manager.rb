@@ -9,8 +9,8 @@ class McpCliManager < Formula
   depends_on "screen"
 
   def install
-    bin.install "cli/mcp"
-    prefix.install "cli/core"
+    bin.install "#{buildpath}/cli/mcp"
+    prefix.install "#{buildpath}/cli/core"
   end
 
   def caveats
