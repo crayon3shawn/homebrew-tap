@@ -9,16 +9,16 @@ class McpCliManager < Formula
   depends_on "screen"
 
   def install
-    bin.install "bin/mcp"
+    bin.install "bin/mcp-cli-manager"
     libexec.install "lib"
-    etc.install "config.yaml.example" => "mcp.yaml"
+    etc.install "config.yaml.example" => "mcp-cli-manager.yaml"
   end
 
   def caveats
     <<~EOS
       請確保創建配置文件：
       mkdir -p ~/.cursor
-      cp #{etc}/mcp.yaml ~/.cursor/mcp.json
+      cp #{etc}/mcp-cli-manager.yaml ~/.cursor/mcp-cli-manager.json
 
       配置文件示例：
       {
