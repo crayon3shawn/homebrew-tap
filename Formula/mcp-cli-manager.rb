@@ -1,37 +1,18 @@
 class McpCliManager < Formula
-  desc "MCP CLI Manager - 用於管理 Model Context Protocol 服務的命令行工具"
+  desc "A CLI tool for managing MCP projects"
   homepage "https://github.com/crayon3shawn/mcp-cli-manager"
-  url "https://github.com/crayon3shawn/mcp-cli-manager/archive/refs/tags/v1.0.2.tar.gz"
-  sha256 "59f871fcfa44655278f82db913c06f49381bcb600941a267ea99f0bf109a1576"
+  url "https://registry.npmjs.org/@chengche/mcp-cli-manager/-/mcp-cli-manager-1.0.7.tgz"
+  sha256 "c8d3eae160a892e32837db3dcae515e843e5383fef52b8141940c8bcf8b6d59f"
   license "MIT"
 
-  depends_on "zsh"
-  depends_on "screen"
+  depends_on "node"
 
   def install
-    bin.install "bin/mcp-cli-manager"
-    libexec.install "lib"
-    etc.install "config.yaml.example" => "mcp-cli-manager.yaml"
+    system "npm", "install", *Language::Node.std_npm_install_args(libexec)
+    bin.install_symlink Dir["#{libexec}/bin/*"]
   end
 
-  def caveats
-    <<~EOS
-      請確保創建配置文件：
-      mkdir -p ~/.cursor
-      cp #{etc}/mcp-cli-manager.yaml ~/.cursor/mcp-cli-manager.json
-
-      配置文件示例：
-      {
-        "mcpServers": {
-          "github": {
-            "command": "/opt/homebrew/bin/mcp-server-github",
-            "args": [],
-            "env": {
-              "GITHUB_PERSONAL_ACCESS_TOKEN": "your-token-here"
-            }
-          }
-        }
-      }
-    EOS
+  test do
+    assert_match "mcp-cli-manager", shell_output("#{bin}/mcp --version")
   end
 end
